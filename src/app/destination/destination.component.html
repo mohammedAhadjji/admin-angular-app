@@ -1,0 +1,82 @@
+<!-- Destination List Content -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<div class="row">
+    
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-body table-responsive">
+                <div class="col-sm-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div>
+                <div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div>
+
+                <table id="example1" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Image</th>
+                            <th>Title</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let destination of destinationData; let i = index">
+                            <td>{{ i + 1 }}</td>
+                            <td><img [src]="url + destination.images[0].name" [alt]="destination.ville.name" style="width:200px;"></td>
+                            <td>{{ destination.title }}</td>
+                            <td>
+                                <a class="btn btn-success btn-xs" (click)="showModal('myModal' + (i + 1))" [attr.data-target]="destinationData ? '#myModal' + (i + 1) : null" data-toggle="modal" style="margin:0.5%;">View Details</a>
+                                <a [routerLink]="'/admin/destination/edit/' + destination['@id']" class="btn btn-primary btn-xs" style="margin:0.5%;">Edit</a>
+                                <a [routerLink]="'/admin/destination/delete/' + destination['@id']" class="btn btn-danger btn-xs" (click)="confirmDelete()" style="margin:0.5%;">Delete</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div><div id="planecran" class="planecran" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: black; opacity: 0.7; z-index: 9998;">
+
+</div>
+<!-- Modals -->
+<div *ngFor="let destination of destinationData; let i = index">
+
+    <div *ngIf="destinationData" class="modal-dialog modal-lg" [id]="'myModal' + (i + 1)" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="display: none; position: fixed; top: 20%; left: 18%; z-index: 9999;backgaound-color:#eee;">
+        
+        <div class="modal-content" style="border:1px #000 solide;">
+            <div class="modal-header">
+                <button type="button" class="close" (click)="closeModal('myModal' + (i + 1))" aria-label="Close">
+
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">View Details</h4>
+            </div>
+            <div class="modal-body">
+                <!-- Destination Details Content -->
+                <div class="rTable">
+                    <div class="rTableRow">
+                        <div class="rTableHead"><strong>Destination Name</strong></div>
+                        <div class="rTableCell">{{ destination.title }}</div>
+                    </div>
+                    <div class="rTableRow">
+                        <div class="rTableHead"><strong>Description</strong></div>
+                        <div class="rTableCell">{{ destination.description }}</div>
+                    </div>
+                    <div class="rTableRow">
+                        <div class="rTableHead"><strong>Country</strong></div>
+                        <div class="rTableCell">{{ destination.pays.name }}</div>
+                    </div>
+                    <div class="rTableRow">
+                        <div class="rTableHead"><strong>City</strong></div>
+                        <div class="rTableCell">{{ destination.ville.name }}</div>
+                    </div>
+                    <!-- Add other details here as needed -->
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" (click)="closeModal('myModal' + (i + 1))">Close</button>
+            </div>
+        </div>
+
+</div>
+
+
+

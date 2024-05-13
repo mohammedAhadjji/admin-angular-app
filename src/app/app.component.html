@@ -11,7 +11,7 @@
 
 			<nav class="navbar navbar-static-top">
 				
-				<a href="#" (click)="toggleClasses()" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+				<a  (click)="toggleClasses()" class="sidebar-toggle" data-toggle="offcanvas" role="button">
 					<span class="sr-only">Toggle navigation</span>
 				</a>
 
@@ -20,12 +20,12 @@
 				<div class="navbar-custom-menu">
 					<ul class="nav navbar-nav">
 						<li>
-							<a href="https://demo.phpscriptpoint.com/travelfresh/" target="_blank">Visit Website</a>
+							<a href="http://localhost:8000/"  target="_blank">Visit Website</a>
 						</li>
 
 						<li class="dropdown user user-menu">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-																	<img src="https://demo.phpscriptpoint.com/travelfresh/public/uploads/user-.jpg" class="user-image" alt="user photo">
+																	<img src="http://localhost:8001/attchments/members/profile-660da136def04108770744.jpg" class="user-image" alt="user photo">
 																
 								<span class="hidden-xs"></span>
 							</a>
@@ -55,73 +55,74 @@
       			<ul class="sidebar-menu">
 
 			        <li class="treeview active">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/dashboard">
+			          <a routerLink="/">
 			            <i class="fa fa-laptop"></i> <span>Dashboard</span>
 			          </a>
 			        </li>
 
 
 								        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/setting">
+			          <a routerLink="/sittings">
 			            <i class="fa fa-cog"></i> <span>Settings</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/page">
+			          <a routerLink="/pages">
 			            <i class="fa fa-file-text"></i> <span>Page</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/traveller">
+			          <a routerLink="/travllers">
 			            <i class="fa fa-plane"></i> <span>Traveller</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/destination">
+			          <a routerLink="/destinations">
 			            <i class="fa fa-map-signs"></i> <span>Destination</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/package">
+			          <a routerLink="/package">
 			            <i class="fa fa-random"></i> <span>Package</span>
 			          </a>
 			        </li>
 
-			        <li class="treeview ">
-						<a href="#">
-							<i class="fa fa-newspaper-o"></i>
-							<span>News</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/category"><i class="fa fa-circle-o"></i>Category</a></li>
-							<li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/news"><i class="fa fa-circle-o"></i> News</a></li>
-							<li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/comment"><i class="fa fa-circle-o"></i> Comment</a></li>
-						</ul>
-					</li>
+              <li [ngClass]="{'treeview': !isActive, 'treeview active': isActive}" (click)="toggleActive()">
+                <a href="#">
+                    <i class="fa fa-newspaper-o"></i>
+                    <span>News</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu" [ngStyle]="{'display': isActive ? 'block' : 'none'}">
+                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/category"><i class="fa fa-circle-o"></i>Category</a></li>
+                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/news"><i class="fa fa-circle-o"></i> News</a></li>
+                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/comment"><i class="fa fa-circle-o"></i> Comment</a></li>
+                </ul>
+            </li>
 
-					<li class="treeview ">
-						<a href="#">
-							<i class="fa fa-comment"></i>
-							<span>Subscriber</span>
-							<span class="pull-right-container">
-								<i class="fa fa-angle-left pull-right"></i>
-							</span>
-						</a>
-						<ul class="treeview-menu">
-							<li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber"><i class="fa fa-circle-o"></i>All Subscribers</a></li>
-							<li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber/send_email"><i class="fa fa-circle-o"></i>Email to Subscribers</a></li>
-						</ul>
-					</li>
+            <li [ngClass]="{'treeview': !isActivenews, 'treeview active': isActivenews}" (click)="togglenewsActive()">
+              <a href="#">
+                <i class="fa fa-comment"></i>
+                <span>Subscriber</span>
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" [ngStyle]="{'display': isActivenews ? 'block' : 'none'}">
+                <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber"><i class="fa fa-circle-o"></i>All Subscribers</a></li>
+                <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber/send_email"><i class="fa fa-circle-o"></i>Email to Subscribers</a></li>
+              </ul>
+            </li>
+            
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/team_member">
+			          <a href="/TeamMembers">
 			            <i class="fa fa-users"></i> <span>Team Member</span>
 			          </a>
 			        </li>
@@ -182,105 +183,11 @@
   		</aside>
 
   		<div class="content-wrapper" style="min-height: 1000px;background-color: aliceblue !important;"><section class="content-header">
-  <h1>Dashboard</h1>
+  <h1>{{ title }}</h1>
 </section>
 
 <section class="content">
-
-  <div class="row">
-
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fab fa-hand-o-right"></i></span>
-
-        <div class="info-box-content">
-          <span class="info-box-text">Total Categories</span>
-          <span class="info-box-number">4</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fab fa-hand-o-right"></i></span>
-
-        <div class="info-box-content">
-          <span class="info-box-text">Total News</span>
-          <span class="info-box-number">4</span>
-        </div>
-      </div>
-    </div>
-    
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Destinations</span>
-          <span class="info-box-number">6</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Package</span>
-          <span class="info-box-number">36</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fab fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Team Members</span>
-          <span class="info-box-number">8</span>
-        </div>
-      </div>
-    </div>
-
-   <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Clients</span>
-          <span class="info-box-number">7</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Services</span>
-          <span class="info-box-number">6</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Testimonials</span>
-          <span class="info-box-number">3</span>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-6 col-xs-12">
-      <div class="info-box">
-        <span class="info-box-icon bg-green"><i class="fa fa-hand-o-right"></i></span>
-        <div class="info-box-content">
-          <span class="info-box-text">Total Travellers</span>
-          <span class="info-box-number">2</span>
-        </div>
-      </div>
-    </div>
-
-
-  </div>
-
+  <router-outlet></router-outlet>
 
 </section>		</div>
 

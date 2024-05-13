@@ -9,8 +9,8 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createUser() {
-    return this.http.get<any>('http://localhost:8001/api/destinations')
+  getUsers() {
+    return this.http.get<any>('http://localhost:8001/api/clients')
       .toPromise()
       .then(response => response)
       .catch(error => {

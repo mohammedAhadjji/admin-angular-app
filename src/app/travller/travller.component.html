@@ -1,0 +1,39 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-info">
+            <div class="box-body table-responsive">
+              <div class="col-sm-6"><div class="dataTables_length" id="example1_length"><label>Show <select name="example1_length" aria-controls="example1" class="form-control input-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div>
+              <div class="col-sm-6"><div id="example1_filter" class="dataTables_filter"><label>Search:<input type="search" class="form-control input-sm" placeholder="" aria-controls="example1"></label></div></div>
+
+              <table class="table table-bordered table-striped dataTable no-footer">
+                <thead>
+                  <tr>
+                    <th>SL</th>
+                    <th>Traveller Name</th>
+                    <th>Traveller Email and Phone</th>
+                    <th>City, State and Country</th>
+                    <th>Address</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let user of userData; let i = index">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ user.fullName }}</td>
+                    <td>{{ user.email }}<br>{{ user.phoneNumber }}</td>
+                    <td>{{ user.ville }}<br>{{ user.pays }}</td>
+                    <td>{{ user.address }}</td>
+                    <td>Active</td> <!-- Assurez-vous d'avoir le statut de l'utilisateur ici -->
+                    <td>
+                      <a href="#" class="btn btn-warning btn-xs"style="margin:0.5%;">Change Status</a>
+                      <a href="#" class="btn btn-danger btn-xs"style="margin:0.5%;">Delete</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          
+    </div>
+</div>
