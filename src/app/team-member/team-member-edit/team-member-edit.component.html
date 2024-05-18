@@ -1,0 +1,31 @@
+<div class="box box-info">
+    <div class="box-body">
+      <!-- Ajoutez d'autres champs ici selon vos besoins -->
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Phone </label>
+        <div class="col-sm-6">
+          <input type="text" autocomplete="off" class="form-control" name="phone" [(ngModel)]="member.phone">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Email Address </label>
+        <div class="col-sm-6">
+          <input type="text" autocomplete="off" class="form-control" name="email" [(ngModel)]="member.email">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label">Website </label>
+        <div class="col-sm-6">
+          <input type="text" autocomplete="off" class="form-control" name="website" [(ngModel)]="member.website">
+        </div>
+      </div>
+      <!-- Fin des champs supplémentaires -->
+      <div class="form-group">
+        <label for="" class="col-sm-2 control-label"></label>
+        <div class="col-sm-6">
+          <button type="submit" class="btn btn-success pull-left" name="form1" (click)="updateMember()">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

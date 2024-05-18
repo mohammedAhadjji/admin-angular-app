@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {  HttpClientModule } from '@angular/common/http';
@@ -14,6 +14,8 @@ import { PageComponent } from './page/page.component';
 import { DestinationComponent } from './destination/destination.component';
 import { OfferComponent } from './offer/offer.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
+import { ServicesComponent } from './services/services.component';
+import { TeamMemberEditComponent } from './team-member/team-member-edit/team-member-edit.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,13 +25,16 @@ import { TeamMemberComponent } from './team-member/team-member.component';
     PageComponent,
     DestinationComponent,
     OfferComponent,
-    TeamMemberComponent
+    TeamMemberComponent,
+    ServicesComponent,
+    TeamMemberEditComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     MatExpansionModule,
+    FormsModule,
     BrowserAnimationsModule 
   ],
   providers: [

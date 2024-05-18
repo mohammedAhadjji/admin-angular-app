@@ -7,6 +7,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { ClientComponent } from './client/client.component';
 import { OfferComponent } from './offer/offer.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
+import { ServicesComponent } from './services/services.component';
+import { TeamMemberEditComponent } from './team-member/team-member-edit/team-member-edit.component';
 
 const routes: Routes = [
   {path:'',component: ClientComponent},
@@ -15,8 +17,9 @@ const routes: Routes = [
   {path:'pages',component: PageComponent},
   {path:'destinations',component: DestinationComponent},
   {path:'package',component: OfferComponent},
-  {path:'TeamMembers',component: TeamMemberComponent}
-
+  {path:'TeamMembers',component: TeamMemberComponent},
+  {path:'services',component: ServicesComponent},
+  { path: 'team_member/edit/:id', component: TeamMemberEditComponent }
 ];
 
 @NgModule({

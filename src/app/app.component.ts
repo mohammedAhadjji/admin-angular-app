@@ -25,9 +25,24 @@ export class AppComponent {
   ngOnInit() {
     this.isUserRoute = this.router.url.startsWith('/users');
     this.titleService.getTitle().subscribe((title) => {
-      this.title = title;
+      this.showTitleCharacterByCharacter(title);
     });
   }
+  showTitleCharacterByCharacter(title: string) {
+    this.title = ''; 
+    let index = 0;
+    const intervalId = setInterval(() => {
+      if (index < title.length) {
+        this.title += title[index];
+        index++;
+      } else {
+        clearInterval(intervalId);
+      }
+    }, 50); 
+  }
+
+
+
   toggleActive() {
     this.isActive = !this.isActive;
     

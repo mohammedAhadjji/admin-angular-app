@@ -1,27 +1,61 @@
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { TeamMemberService } from './../../services/team-member.service';
-import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-team-member',
   templateUrl: './team-member.component.html',
-  styleUrl: './team-member.component.css'
+  styleUrls: ['./team-member.component.css']
 })
-export class TeamMemberComponent {
+export class TeamMemberComponent implements OnInit {
   TeamData: any;
-  constructor(private router: Router, private teamMemberService: TeamMemberService){
-    
-  }
+  updateData: any;
+  id: string | undefined;
+
+  constructor(private router: Router, private teamMemberService: TeamMemberService) {}
+
   ngOnInit() {
-    this.getmember();
+    this.getMembers();
   }
-  async getmember() {
+
+  async getMembers() {
     try {
       const response = await this.teamMemberService.getmember();
       this.TeamData = response['hydra:member']; // Assurez-vous de récupérer les données de la bonne clé
       console.log(this.TeamData);
     } catch (error) {
-      console.error("Une erreur s'est produite lors de la récupération des utilisateurs :", error);
+      console.error("Une erreur s'est produite lors de la récupération des membres :", error);
     }
+  }
+
+  async updateMember(data: any) {
+    if (!this.id) {
+      console.error("ID de membre manquant pour la mise à jour.");
+      return;
+    }
+
+    try {
+      if (data.image) {
+        const imageResponse = await this.teamMemberService.postImage(data.image);
+        data.imageId = imageResponse.id; // Assurez-vous que l'objet de réponse contient l'ID de l'image
+      }
+
+      const updateResponse = await this.teamMemberService.update(this.id, data);
+      this.TeamData = updateResponse['hydra:member'];
+      console.log(this.TeamData);
+    } catch (error) {
+      console.error("Une erreur s'est produite lors de la mise à jour du membre de l'équipe :", error);
+    }
+  }
+
+  confirmDelete(id: any) {
+    if (confirm('Are you sure?')) {
+      // Call delete service method here if needed
+      console.log(`Deleting member with id: ${id}`);
+    }
+  }
+
+  editMember(id: string) {
+    this.router.navigate(['/team_member/edit', id]);
   }
 }
