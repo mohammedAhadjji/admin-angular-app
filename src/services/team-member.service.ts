@@ -13,11 +13,15 @@ export class TeamMemberService {
     const formData = new FormData();
     formData.append('file', imageFile);
 
-    return this.http.post<any>('http://localhost:8001/api/upload', formData).toPromise();
+    return this.http.post<any>(this.pathImg, formData).toPromise();
   }
 
   update(id: string, data: any): Promise<any> {
-    return this.http.patch<any>(`${this.path}/${id}`, data).toPromise();
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/merge-patch+json'
+    });
+
+    return this.http.patch<any>(`${this.path}/${id}`, data, { headers }).toPromise();
   }
   getMember(id: string): Observable<any> {
     return this.http.get<any>(`${this.path}/${id}`);
@@ -31,4 +35,9 @@ export class TeamMemberService {
         throw error;
       });
   }
+  deleteMember(id: string): Promise<any> {
+    return this.http.delete<any>(`${this.path}/${id}`).toPromise();
+  }
+
+  
 }

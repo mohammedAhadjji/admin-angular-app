@@ -19,7 +19,7 @@ const routes: Routes = [
   {path:'package',component: OfferComponent},
   {path:'TeamMembers',component: TeamMemberComponent},
   {path:'services',component: ServicesComponent},
-  { path: 'team_member/edit/:id', component: TeamMemberEditComponent }
+  { path: 'teamMember_edit/:id', component: TeamMemberEditComponent }
 ];
 
 @NgModule({

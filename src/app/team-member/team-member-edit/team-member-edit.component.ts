@@ -31,6 +31,7 @@ throw new Error('Method not implemented.');
     try {
       const response = await this.teamMemberService.getMember(this.id).toPromise();
       this.member = response;
+      console.log('Membre de l\'équipe récupéré avec succès :', this.member);
     } catch (error) {
       console.error('Erreur lors de la récupération du membre de l\'équipe :', error);
     }
@@ -40,22 +41,30 @@ throw new Error('Method not implemented.');
     try {
       if (this.imageFile) {
         const imageResponse = await this.teamMemberService.postImage(this.imageFile);
-        this.member.imageId = imageResponse.id;
+        this.member.image = imageResponse.name; // Assurez-vous que le nom du fichier est bien "fileName" dans la réponse
       }
 
       const updateResponse = await this.teamMemberService.update(this.id, this.member);
       console.log('Membre mis à jour avec succès :', updateResponse);
 
       // Rediriger vers la liste des membres après la mise à jour
-      this.router.navigate(['/team-members']);
+      this.router.navigate(['/TeamMembers']);
     } catch (error) {
       console.error('Erreur lors de la mise à jour du membre de l\'équipe :', error);
     }
   }
 
+  selectedImage: string | ArrayBuffer | null = null;
+
   onFileChange(event: any) {
-    if (event.target.files.length > 0) {
-      this.imageFile = event.target.files[0];
-    }
+      const reader = new FileReader();
+      if (event.target.files && event.target.files.length) {
+          const file = event.target.files[0];
+          reader.readAsDataURL(file);
+          reader.onload = () => {
+              this.selectedImage = reader.result;
+          };
+      }
   }
+  
 }

@@ -48,14 +48,21 @@ export class TeamMemberComponent implements OnInit {
     }
   }
 
-  confirmDelete(id: any) {
+  async confirmDelete(id: any) {
     if (confirm('Are you sure?')) {
-      // Call delete service method here if needed
-      console.log(`Deleting member with id: ${id}`);
+      try {
+        console.log(`Deleting member with id: ${id}`);
+        await this.teamMemberService.deleteMember(id);
+        console.log(`Member with id ${id} deleted successfully.`);
+        // Rafraîchir la liste des membres après la suppression
+        this.getMembers();
+      } catch (error) {
+        console.error(`Error deleting member with id ${id}:`, error);
+      }
     }
   }
 
   editMember(id: string) {
-    this.router.navigate(['/team_member/edit', id]);
+    this.router.navigate(['teamMember_edit', id]);
   }
 }

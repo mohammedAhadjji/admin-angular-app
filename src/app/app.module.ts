@@ -34,7 +34,7 @@ import { TeamMemberEditComponent } from './team-member/team-member-edit/team-mem
     AppRoutingModule,
     HttpClientModule,
     MatExpansionModule,
-    FormsModule,
+    FormsModule ,
     BrowserAnimationsModule 
   ],
   providers: [
