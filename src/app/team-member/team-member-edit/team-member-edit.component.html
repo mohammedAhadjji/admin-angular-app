@@ -28,16 +28,20 @@
         <div class="form-group row">
             <label for="image" class="col-sm-2 control-label">Image</label>
             <div class="col-sm-6">
-                <img [src]="selectedImage ? selectedImage : 'http://localhost:8001/attchments/members/' + member.image" alt="{{ member.name }} {{ member.lastName }}" style="width:140px;">
+                <img 
+                  [src]="selectedImage ? selectedImage : 'http://localhost:8001/attchments/members/' + member.image" 
+                  alt="{{ member.name }} {{ member.lastName }}" 
+                  style="width:140px;">
                 <input type="file" class="form-control-file" name="image" (change)="onFileChange($event)">
-            </div>
+              </div>
+              
             
         </div>
         <!-- Fin des champs supplémentaires -->
         <div class="form-group row">
             <label for="" class="col-sm-2 control-label"></label>
             <div class="col-sm-6">
-                <button type="submit" class="btn btn-success pull-left" (click)="updateMember()">Submit</button>
+                <button type="submit" class="btn btn-success pull-left" (click)="updateMember()"style="margin:0.3%;">Submit</button><button class="btn btn-primary pull-left" (click)="retourMemberlist()"style="margin:0.3%;">liste members</button>
             </div>
         </div>
     </div>

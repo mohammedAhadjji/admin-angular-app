@@ -1,0 +1,29 @@
+<div class="box box-info">
+    <div class="box-body">
+<div class="container">
+    <h2>Create Team Member</h2>
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="name" [(ngModel)]="member.name" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name:</label>
+        <input type="text" class="form-control" id="lastName" [(ngModel)]="member.lastName" name="lastName" required>
+      </div>
+      <div class="form-group">
+        <label for="image">Image:</label>
+        <div class="col-sm-6">
+          <img 
+            *ngIf="selectedImage" 
+            [src]="selectedImage" 
+            alt="{{ member.name }} {{ member.lastName }}" 
+            style="width:140px;">
+          <input type="file" class="form-control-file" name="image" (change)="onFileChange($event)">
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary">Create</button>
+      <button type="button" class="btn btn-secondary" (click)="retourMemberlist()">Cancel</button>
+    </form>
+  </div></div></div>
+  

@@ -16,6 +16,7 @@ import { OfferComponent } from './offer/offer.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
 import { ServicesComponent } from './services/services.component';
 import { TeamMemberEditComponent } from './team-member/team-member-edit/team-member-edit.component';
+import { TeamMemberCreateComponent } from './team-member/team-member-create/team-member-create.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +28,8 @@ import { TeamMemberEditComponent } from './team-member/team-member-edit/team-mem
     OfferComponent,
     TeamMemberComponent,
     ServicesComponent,
-    TeamMemberEditComponent
+    TeamMemberEditComponent,
+    TeamMemberCreateComponent
   ],
   imports: [
     BrowserModule,

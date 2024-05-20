@@ -8,12 +8,16 @@ import { TeamMemberService } from '../../../services/team-member.service';
   styleUrls: ['./team-member-edit.component.css']
 })
 export class TeamMemberEditComponent implements OnInit {
+retourMemberlist() {
+  this.router.navigate(['TeamMembers']);
+}
 onBannerChange($event: Event) {
 throw new Error('Method not implemented.');
 }
   member: any = {};
   id: string;
   imageFile: File | null = null;
+  selectedImage: string | ArrayBuffer | null = null;
 
   constructor(
     private route: ActivatedRoute,
@@ -36,13 +40,18 @@ throw new Error('Method not implemented.');
       console.error('Erreur lors de la récupération du membre de l\'équipe :', error);
     }
   }
-
+  
   async updateMember() {
     try {
       if (this.imageFile) {
-        const imageResponse = await this.teamMemberService.postImage(this.imageFile);
-        this.member.image = imageResponse.name; // Assurez-vous que le nom du fichier est bien "fileName" dans la réponse
+        try {
+          const imageResponse = await this.teamMemberService.postImage(this.imageFile).toPromise();
+          this.member.image = imageResponse.name; // Access the 'name' property directly from the response
+        } catch (error) {
+          console.error('Error uploading image:', error);
+        }
       }
+      
 
       const updateResponse = await this.teamMemberService.update(this.id, this.member);
       console.log('Membre mis à jour avec succès :', updateResponse);
@@ -54,17 +63,16 @@ throw new Error('Method not implemented.');
     }
   }
 
-  selectedImage: string | ArrayBuffer | null = null;
-
   onFileChange(event: any) {
-      const reader = new FileReader();
-      if (event.target.files && event.target.files.length) {
-          const file = event.target.files[0];
-          reader.readAsDataURL(file);
-          reader.onload = () => {
-              this.selectedImage = reader.result;
-          };
-      }
+    const reader = new FileReader();
+    if (event.target.files && event.target.files.length) {
+      const file = event.target.files[0];
+      this.imageFile = file;
+      reader.readAsDataURL(file);
+      reader.onload = () => {
+        this.selectedImage = reader.result;
+      };
+    }
   }
   
 }

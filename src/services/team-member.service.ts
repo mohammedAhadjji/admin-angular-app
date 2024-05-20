@@ -9,11 +9,24 @@ export class TeamMemberService {
   path = 'http://localhost:8001/api/team_members';
   pathImg = 'http://localhost:8001/api/image_ms';
   constructor(private http: HttpClient) { }
-  postImage(imageFile: File): Promise<any> {
+/*  postImage(imageFile: File): Promise<any> {
     const formData = new FormData();
     formData.append('file', imageFile);
 
     return this.http.post<any>(this.pathImg, formData).toPromise();
+  }/
+  postImage(image: File): Observable<any> {
+    const formData: FormData = new FormData();
+    formData.append('image', image);
+    return this.http.post(`${this.pathImg}`, formData);
+  }*/
+  postImage(file: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<any>(`${this.pathImg}`, formData); // Ensure that the response type is properly handled
+  }
+  create(member: any): Observable<any> {
+    return this.http.post(`${this.path}`, member);
   }
 
   update(id: string, data: any): Promise<any> {

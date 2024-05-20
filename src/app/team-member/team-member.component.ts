@@ -28,25 +28,6 @@ export class TeamMemberComponent implements OnInit {
     }
   }
 
-  async updateMember(data: any) {
-    if (!this.id) {
-      console.error("ID de membre manquant pour la mise à jour.");
-      return;
-    }
-
-    try {
-      if (data.image) {
-        const imageResponse = await this.teamMemberService.postImage(data.image);
-        data.imageId = imageResponse.id; // Assurez-vous que l'objet de réponse contient l'ID de l'image
-      }
-
-      const updateResponse = await this.teamMemberService.update(this.id, data);
-      this.TeamData = updateResponse['hydra:member'];
-      console.log(this.TeamData);
-    } catch (error) {
-      console.error("Une erreur s'est produite lors de la mise à jour du membre de l'équipe :", error);
-    }
-  }
 
   async confirmDelete(id: any) {
     if (confirm('Are you sure?')) {
@@ -61,7 +42,9 @@ export class TeamMemberComponent implements OnInit {
       }
     }
   }
-
+ newMember(){
+   this.router.navigate(['TeamMembers_new']);
+ }
   editMember(id: string) {
     this.router.navigate(['teamMember_edit', id]);
   }

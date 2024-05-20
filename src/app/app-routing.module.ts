@@ -9,6 +9,7 @@ import { OfferComponent } from './offer/offer.component';
 import { TeamMemberComponent } from './team-member/team-member.component';
 import { ServicesComponent } from './services/services.component';
 import { TeamMemberEditComponent } from './team-member/team-member-edit/team-member-edit.component';
+import { TeamMemberCreateComponent } from './team-member/team-member-create/team-member-create.component';
 
 const routes: Routes = [
   {path:'',component: ClientComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path:'package',component: OfferComponent},
   {path:'TeamMembers',component: TeamMemberComponent},
   {path:'services',component: ServicesComponent},
-  { path: 'teamMember_edit/:id', component: TeamMemberEditComponent }
+  {path: 'teamMember_edit/:id', component: TeamMemberEditComponent },
+  {path: 'TeamMembers_new', component: TeamMemberCreateComponent },
 ];
 
 @NgModule({
