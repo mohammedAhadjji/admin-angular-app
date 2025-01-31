@@ -67,11 +67,11 @@
 			          </a>
 			        </li>
 
-			        <li class="treeview ">
+			        <!--li-- class="treeview ">
 			          <a routerLink="/pages">
 			            <i class="fa fa-file-text"></i> <span>Page</span>
 			          </a>
-			        </li>
+			        </!--li-->
 
 			        <li class="treeview ">
 			          <a routerLink="/travllers">
@@ -92,7 +92,7 @@
 			        </li>
 
               <li [ngClass]="{'treeview': !isActive, 'treeview active': isActive}" (click)="toggleActive()">
-                <a href="#">
+                <a routerLink="/news">
                     <i class="fa fa-newspaper-o"></i>
                     <span>News</span>
                     <span class="pull-right-container">
@@ -100,14 +100,14 @@
                     </span>
                 </a>
                 <ul class="treeview-menu" [ngStyle]="{'display': isActive ? 'block' : 'none'}">
-                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/category"><i class="fa fa-circle-o"></i>Category</a></li>
-                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/news"><i class="fa fa-circle-o"></i> News</a></li>
-                    <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/comment"><i class="fa fa-circle-o"></i> Comment</a></li>
+                    <li><a routerLink="/categories"><i class="fa fa-circle-o"></i>Category</a></li>
+                    <li><a routerLink="/news"><i class="fa fa-circle-o"></i> News</a></li>
+                    <li><a routerLink="/commentair"><i class="fa fa-circle-o"></i> Comment</a></li>
                 </ul>
             </li>
 
             <li [ngClass]="{'treeview': !isActivenews, 'treeview active': isActivenews}" (click)="togglenewsActive()">
-              <a href="#">
+              <a routerLink="/Subscriber">
                 <i class="fa fa-comment"></i>
                 <span>Subscriber</span>
                 <span class="pull-right-container">
@@ -115,8 +115,8 @@
                 </span>
               </a>
               <ul class="treeview-menu" [ngStyle]="{'display': isActivenews ? 'block' : 'none'}">
-                <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber"><i class="fa fa-circle-o"></i>All Subscribers</a></li>
-                <li><a href="https://demo.phpscriptpoint.com/travelfresh/admin/subscriber/send_email"><i class="fa fa-circle-o"></i>Email to Subscribers</a></li>
+                <li><a routerLink="/Subscriber"><i class="fa fa-circle-o"></i>All Subscribers</a></li>
+                <li><a routerLink="/email_to_Subscriber"><i class="fa fa-circle-o"></i>Email to Subscribers</a></li>
               </ul>
             </li>
             
@@ -128,19 +128,19 @@
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/slider">
+			          <a routerLink="/slider">
 			            <i class="fa fa-picture-o"></i> <span>Slider</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/testimonial">
+			          <a routerLink="/testimonial">
 			            <i class="fa fa-user-plus"></i> <span>Testimonial</span>
 			          </a>
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/client">
+			          <a href="/collaborators">
 			            <i class="fa fa-clone"></i> <span>Client</span>
 			          </a>
 			        </li>
@@ -152,28 +152,28 @@
 			        </li>
 
 			        <li class="treeview ">
-			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/payment">
+			          <a routerLink="/payment">
 			            <i class="fa fa-usd"></i> <span>Payment</span>
 			          </a>
 			        </li>
 
-			        <li class="treeview ">
+			        <!--li class="treeview ">
 			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/faq">
 			            <i class="fa fa-bolt"></i> <span>FAQ</span>
 			          </a>
-			        </li>
+			        </li-->
 
-			        <li class="treeview ">
+			        <!--li class="treeview ">
 			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/file">
 			            <i class="fa fa-file-text"></i> <span>File</span>
 			          </a>
-			        </li>
+			        </-li-->
 
-			        <li class="treeview ">
+			        <!--li class="treeview ">
 			          <a href="https://demo.phpscriptpoint.com/travelfresh/admin/social_media">
 			            <i class="fa fa-address-book"></i> <span>Social Media</span>
 			          </a>
-			        </li>
+			        </li-->
 
 			        	        
 

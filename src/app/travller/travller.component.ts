@@ -24,4 +24,21 @@ async getUsers() {
     console.error("Une erreur s'est produite lors de la récupération des utilisateurs :", error);
   }
 }
+async patchUserStatus(userId: number, status: string) {
+  try {
+    await this.userService.patchUserStatus(userId, status);
+    this.getUsers(); // Refresh user data after patch
+  } catch (error) {
+    console.error("Une erreur s'est produite lors de la mise à jour du statut de l'utilisateur :", error);
+  }
+}
+
+async deleteUser(userId: number) {
+  try {
+    await this.userService.deleteUser(userId).toPromise();
+    this.getUsers(); // Refresh user data after delete
+  } catch (error) {
+    console.error("Une erreur s'est produite lors de la suppression de l'utilisateur :", error);
+  }
+}
 }

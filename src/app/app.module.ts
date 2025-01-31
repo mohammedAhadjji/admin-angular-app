@@ -17,6 +17,19 @@ import { TeamMemberComponent } from './team-member/team-member.component';
 import { ServicesComponent } from './services/services.component';
 import { TeamMemberEditComponent } from './team-member/team-member-edit/team-member-edit.component';
 import { TeamMemberCreateComponent } from './team-member/team-member-create/team-member-create.component';
+import { EditServiceComponent } from './services/edit-service/edit-service.component';
+import { NewsComponent } from './news/news.component';
+import { CategoriesComponent } from './categories/categories.component';
+import { CommentairComponent } from './commentair/commentair.component';
+import { SliderComponent } from './slider/slider.component';
+import { PaymentComponent } from './payment/payment.component';
+import { TestimonialsComponent } from './testimonials/testimonials.component';
+import { CollabComponent } from './collab/collab.component';
+import { SubscriberComponent } from './subscriber/subscriber.component';
+import { EmailToSubscriberComponent } from './email-to-subscriber/email-to-subscriber.component';
+import { FaviconComponent } from './setting/favicon/favicon.component';
+import { GeneralContentComponent } from './setting/general-content/general-content.component';
+import { SittingsEmailComponent } from './setting/sittings-email/sittings-email.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,7 +42,20 @@ import { TeamMemberCreateComponent } from './team-member/team-member-create/team
     TeamMemberComponent,
     ServicesComponent,
     TeamMemberEditComponent,
-    TeamMemberCreateComponent
+    TeamMemberCreateComponent,
+    EditServiceComponent,
+    NewsComponent,
+    CategoriesComponent,
+    CommentairComponent,
+    SliderComponent,
+    PaymentComponent,
+    TestimonialsComponent,
+    CollabComponent,
+    SubscriberComponent,
+    EmailToSubscriberComponent,
+    FaviconComponent,
+    GeneralContentComponent,
+    SittingsEmailComponent
   ],
   imports: [
     BrowserModule,

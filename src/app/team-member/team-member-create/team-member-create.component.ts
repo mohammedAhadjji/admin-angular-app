@@ -31,7 +31,7 @@ export class TeamMemberCreateComponent {
       
   
       // Create the new team member
-      const createResponse = await this.teamMemberService.create(this.member);
+      const createResponse = await this.teamMemberService.create(this.member).toPromise();
       console.log('Membre créé avec succès :', createResponse);
   
       // Redirect to the team members list after creation

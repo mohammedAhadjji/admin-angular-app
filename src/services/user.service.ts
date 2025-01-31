@@ -1,11 +1,13 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
   path = 'http:/localhost:8001/api/clients';
+  apiUrl: any;
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +19,20 @@ export class UserService {
         console.error('Erreur lors de la création de l\'utilisateur :', error);
         throw error;
       });
+  }
+  patchUserStatus(userId: number, status: string): Promise<any> {
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/merge-patch+json'
+    });
+
+   // return this.http.patch<any>(`${this.path}/${id}`, data, { headers }).toPromise();
+  
+    return this.http.patch<any>(`${this.path}/${userId}`, { status: status }, { headers }).toPromise();
+   
+  }
+
+  deleteUser(userId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/users/${userId}`);
   }
   test(){
     // how can i read a file with input of type 'file'
